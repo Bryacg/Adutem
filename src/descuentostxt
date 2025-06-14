@@ -1,0 +1,63 @@
+export default function RegisterPage() {
+    return (
+        <div>
+            <h1>Asociacion de Docentes de la Universidad Técnica de Manabí</h1>
+            <h2>Institución sin fines de lucro</h2>
+            <p> Tiene 580 socios activos  y 132 socios jubilados, total 712 socios.</p>
+            <p>Dirección: Chile y Callejon Robles </p>
+            <p>Telefonos: 0999167523 - 052632200 </p>
+            <p>Correos: adutem@utm.edu.ec  /  adutem@yahoo.com </p>
+            <h1>VALORES QUE SE DESCUENTAN A LOS SOCIOS DE ADUTEM</h1>
+
+            <section>
+                <h1>Cuota ADUTEM</h1>
+                <p>$8.50</p>
+                <p>Valor destinado para el pago de servicios básicos, mantenimiento de las instalaciones (edificio, canchas, piscina, salón de juego, etc), pago de personal, impuestos municipales y SRI, cuotas FEPUPE,  gastos administrativos y celebración del Día del Maestro y Navidad</p>
+            </section>
+            <section>
+                <h1>FONDO DE ENFERMEDAD</h1>
+                <p>$3.39</p>
+                <p>Valos destinado exclusivamente para ayudar a los compañeros en caso de enfermedades graves, cirugias y hospitalizaciones, (covid) (hasta 200 usd)</p>
+            </section>
+            {/* Descuentos Obligatorios*/}
+
+            <section>
+                <h1>SEGURO DE VIDA</h1>
+                <p>$24.98</p>
+                <p>Cobertura 33,000,00 USD; El valor descontado 24, 98USD,  se cancela en su totalidad, mensualmente a la empresa aseguradora, Seguros del Pichincha S.A. ;  NO ES OBLIGATORIO. Ver detalle de coberturas.</p>
+            </section>
+            <section>
+                <h1>CUOTAS DE NUCLEO</h1>
+                <p>Agricola 25 USD; Zootécnia 20 USD y las demás facultades 10 USD</p>
+                <p>Cada Facultad  fija una cuota, este valor se descuenta a tráves de adutem y se entrega mensualmente a los Núcleos. NO ES OBLIGATORIO</p>
+            </section>
+            {/* Insalaciones*/}
+            <section>
+                <h1>PISCINA</h1>
+                <p>El acceso a la piscina es gratuito, pueden ingresar los docentes- socios de adutem, su esposa /o, hijos o nietos. En el horario de martes a domingo de 08 a 18 horas</p>
+            </section><section>
+                <h1>CANCHA DE USO MULTIPLE</h1>
+                <p>El uso es gratuito, para los docentes- socios de adutem, En el horario de martes a domingo de 08 a 18 horas, solicitar por escrito autorizacion de uso</p>
+            </section>
+            <section>
+                <h1>CANCHA SINTETICA</h1>
+                <p>La cancha sintética tiene un costode 25 USD en la noche y 20 USD en el día, para los docentes- socios de adutem  se le descontá 2,50 en la noche y 2 USD en el día. En el horario de lunes a domingo de 08 a 24 horas, solicitar por escrito autorizacion de uso</p>
+            </section>
+            <section>
+                <h1>AREA DE PARRILLADA</h1>
+                <p>El uso es gratuito, para los docentes- socios de adutem, En el horario de lunes a domingo de 08 a 18 horas, solicitar por escrito autorizacion de uso. Se debe solicitar por escrito el uso de este espacio y cacelar el valor de limpieza.</p>
+            </section>
+            <section>
+                <h1>SALON DE EVENTOS(120 A 150 PERSONA)</h1>
+                <p>El salón de eventos  tiene un costode 200 USD para particulares y 150 para los docentes- socios de adutem , se debe solicitar por escrito el uso del mismo y cancelar mediante déposito a la cuenta de adutem,  por lo menos un día antes del evento.</p>
+            </section>
+            {/*Convenios*/}
+            <p>Los docentes-socios pueden hacer uso de los convenios, donde pueden obtener bienes y servicios ( medicinas, servicios médicos, lentes, electrodomesticos, llantas para vehículos, telefonía celular, ropa) con crédito directo, las cuotas dependerán del monto cel crédito.  adjunto lista</p>
+            <h1>CONVENIO ADUTEM-UTM-POSGRADO</h1>
+            <p>Los docentes-socios de ADUTEM, pueden acceder a becas para sus familiares en los diferentes programas de Maestrias, hasta el 60% del valor de la Maestria</p>
+            <h1>EVENTOS ACADEMÍCOS, DEPORTIVOS Y SOCIALES</h1>
+            <p>Los docentes-socios pueden participar de forma gratuita de todos los enventos cientificos, deportivos y sociales que organice la ADUTEM</p>
+
+        </div>
+    )
+}

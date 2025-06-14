@@ -1,0 +1,53 @@
+src 
+    
+    |
+    |
+    |
+    ├── app/                                        # Directorio principal del App Router
+    │     ├──login/
+    │     |     └── page.tsx
+    │     ├──api/
+    │     |     ├── login/
+          |     |       ├──usuario/
+          |     |       |     └── route.ts
+          |     |       └──route.ts
+          |     └── logout/
+          |             └── route.ts
+    │     ├──ui/
+    │     |     ├── Drawe2.tsx
+    │     |     └── Navbar.tsx
+    │     └── Home/
+    │       ├── layout.tsx                          # Layout global de la aplicación
+    │       ├── page.tsx                            # Página de inicio (ruta "/")
+    │       │
+    │       ├── socios/                             # Ruta: /socios
+    │       │       ├── page.tsx                    # UI de la lista de socios (/socios)
+    │       │       ├── registrar/                  # Ruta: /socios/registrar
+    │       │       │       └── page.tsx            # UI del formulario de registro de socios
+    │       │       ├── [id]/                       # Ruta dinámica: /socios/[id]
+    │       │       │       └── page.tsx            # UI del detalle/actualización del socio
+    │       │       └── deshabilitar/               # Ruta: /socios/deshabilitar
+    │       │               └── page.tsx            # UI para deshabilitar socios
+    │       │
+    │       ├── cursos/                             # Ruta: /cursos
+    │       │       ├── page.tsx                    # UI de la lista de cursos (/cursos)
+    │       │       ├── registrar/                  # Ruta: /cursos/registrar
+    │       │       │       └── page.tsx            # UI del formulario de registro de cursos
+    │       │       ├── [id]/                       # Ruta dinámica: /cursos/[id]
+    │       │       │       ├── page.tsx             # UI del detalle del curso
+    │       │       │       └── inscripciones/      # Ruta: /cursos/[id]/inscripciones
+    │       │       │               └── page.tsx    # UI para ver/gestionar inscripciones de este curso
+    │       │       └── gestionar-inscripciones/    # Ruta: /cursos/gestionar-inscripciones
+    │       │                └── page.tsx           # UI general para gestionar inscripciones
+    │       │
+    │       ├── egresos/                            # Ruta: /egresos
+    │       │       ├── page.tsx                    # UI de la lista de egresos (/egresos)
+    │       │       └── registrar/                  # Ruta: /egresos/registrar
+    │       │               └── page.tsx            # UI del formulario de registro de egresos
+    │       │
+    │       ├── convenios/                          # NUEVA RUTA: /convenios
+    │       │       ├── page.tsx                    # UI de la lista de convenios disponibles (/convenios)
+    │       │       ├── registrar/                  # Ruta: /convenios/registrar
+    │       │       │       └── page.tsx            # UI del formulario para registrar nuevos convenios
+    │       │       └── [id]/                       # Ruta dinámica: /convenios/[id] (detalle/actualización de un convenio)
+    │       │               └── page.tsx            # UI del detalle/actualización de un convenio

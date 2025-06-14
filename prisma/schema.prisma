@@ -1,0 +1,155 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+// Define your enums here
+
+enum tipo_sangre_enum {
+  A_pos   @map("A+")
+  A_neg   @map("A-")
+  B_pos   @map("B+")
+  B_neg   @map("B-")
+  AB_pos  @map("AB+")
+  AB_neg  @map("AB-")
+  O_pos   @map("O+")
+  O_neg   @map("O-")
+}
+
+enum tipo_area_enum {
+  Cancha_Sintetica      @map("Cancha Sintetica")
+  Piscina               @map("Piscina")
+  Salon_de_Eventos      @map("Salon de Eventos")
+  cancha_uso_Multiple   @map("cancha uso Multiple")
+  Zona_de_Parillada     @map("Zona de Parillada")
+}
+
+enum estado_pago_enum {
+  Pendiente
+  Completado
+  Fallido
+  Reembolsado
+}
+
+enum metodo_pago_enum {
+  Tarjeta_Credito         @map("Tarjeta Credito")
+  Tarjeta_Debito          @map("Tarjeta Debito")
+  Efectivo                @map("Efectivo")
+  Transferencia_Bancaria  @map("Transferencia Bancaria")
+  PayPal                  @map("PayPal")
+  Otros                   @map("Otros")
+}
+
+enum estado_reserva_enum {
+  Confirmada
+  Pendiente
+  Cancelada
+  Completada
+}
+
+// Define el modelo de la base de dato exportandola si no tnemos una base de datos existente
+// o importandola si ya tenemos una base de datos existente
+// Puedes usar el comando `prisma db push` para sincronizar tu esquema con la base de datos
+// o `prisma db pull` para importar el esquema de una base de datos existente
+//npx prisma migrate dev --name init
+model persona {
+  id               Int              @id @default(autoincrement())
+  nombre           String           @db.VarChar(100)
+  apellido         String           @db.VarChar(100)
+  cedula           String           @unique @db.VarChar(20)
+  fecha_nacimiento DateTime
+  direccion        String           @db.VarChar(255)
+  telefono         String           @db.VarChar(20)
+  nombres_padres   String           @db.VarChar(255)
+  nombres_madre    String           @db.VarChar(255)
+  alergias         String?
+  tipo_sangre      tipo_sangre_enum
+  correo           String           @unique @db.VarChar(100)
+
+  usuario usuario[]
+  inscripciones inscripciones[]
+}
+
+model usuario {
+  id         Int      @id @default(autoincrement())
+  correo     String   @unique @db.VarChar(100)
+  contraseña String   @db.VarChar(100)
+  persona_id Int
+  persona    persona  @relation(fields: [persona_id], references: [id])
+  convenios  convenios[]
+  reservas   reservas[]
+}
+
+model convenios {
+  id         Int      @id @default(autoincrement())
+  nombre     String   @db.VarChar(100)
+  descripcion String?
+  usuario_id Int
+  usuario    usuario  @relation(fields: [usuario_id], references: [id])
+}
+
+model horario {
+  id         Int      @id @default(autoincrement())
+  fecha      DateTime @db.Date
+  hora_ini   DateTime @db.Time
+  hora_final DateTime @db.Time
+  actividad  String   @db.VarChar(100)
+  descripcion String?
+  cursos     cursos[]
+  reservas   reservas[]
+}
+
+model cursos {
+  id          Int      @id @default(autoincrement())
+  nombre      String   @db.VarChar(100)
+  descripcion String?
+  horario_id  Int
+  horario     horario  @relation(fields: [horario_id], references: [id])
+  inscripciones inscripciones[]
+}
+
+model areas_recreativas {
+  id          Int      @id @default(autoincrement())
+  nombre      String   @db.VarChar(100)
+  tipo        tipo_area_enum
+  descripcion String?
+  precio      Decimal  @db.Decimal(10,2)
+  reservas    reservas[]
+}
+
+model pagos {
+  id         Int             @id @default(autoincrement())
+  monto      Decimal         @db.Decimal(10,2)
+  fecha_pago DateTime        @db.Date
+  metodo     metodo_pago_enum
+  estado     estado_pago_enum
+}
+
+model reservas {
+  id          Int                @id @default(autoincrement())
+  usuario_id  Int
+  usuario     usuario            @relation(fields: [usuario_id], references: [id])
+  area_id     Int
+  area        areas_recreativas  @relation(fields: [area_id], references: [id])
+  horario_id  Int
+  horario     horario            @relation(fields: [horario_id], references: [id])
+  estado      estado_reserva_enum
+}
+
+model inscripciones {
+  id         Int      @id @default(autoincrement())
+  curso_id   Int
+  curso      cursos   @relation(fields: [curso_id], references: [id])
+  persona_id Int
+  persona    persona  @relation(fields: [persona_id], references: [id])
+}
