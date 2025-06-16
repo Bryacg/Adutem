@@ -114,8 +114,8 @@ export default function Draweru() {
             </button>
             {openConvenios && (
               <div className="pl-4 mt-1 space-y-1">
-                <Link href="/convenios" className="flex items-center gap-2 hover:underline">Ver convenios</Link>
-                <Link href="/convenios/registrar" className="flex items-center gap-2 hover:underline">Registrar convenio</Link>
+                <Link href="/home/convenios" className="flex items-center gap-2 hover:underline">Ver convenios</Link>
+                <Link href="/home/convenios/registro_convenio" className="flex items-center gap-2 hover:underline">Registrar convenio</Link>
               </div>
             )}
           </div>

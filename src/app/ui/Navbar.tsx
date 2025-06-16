@@ -10,7 +10,7 @@ export default function Navbar() {
   const [usuario, setUsuario] = useState<{ nombre: string, correo: string } | null>(null);
 
   //Carga usuario desde a cookie
-  useEffect(() => { fetch('/api/login/usuario').then(res => res.json().then(data => { if (data.usuario) { setUsuario(data.usuario); } })).catch(()=>{setUsuario(null)}) },[])
+  useEffect(() => { fetch('/api/auth/login/cache').then(res => res.json().then(data => { if (data.usuario) { setUsuario(data.usuario); } })).catch(()=>{setUsuario(null)}) },[])
 
   // Cierra el menú si se hace clic fuera
   useEffect(() => {

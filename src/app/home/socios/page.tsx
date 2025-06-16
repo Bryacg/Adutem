@@ -1,86 +1,123 @@
-// components/PersonasTable.tsx
-'use client'; // This directive is necessary for client-side components in App Router
+'use client'; // This directive marks the component as a Client Component
 
-import React, { useEffect, useState } from 'react';
-import { persona, tipo_sangre_enum } from '@prisma/client'; // Import Prisma generated types
+import * as React from 'react';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import Paper from '@mui/material/Paper';
+import { useEffect, useState } from 'react';
 
-const PersonasTable: React.FC = () => {
-  const [personas, setPersonas] = useState<persona[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+const columns: GridColDef[] = [
+    {
+        field: 'id', headerName: 'ID', type: 'number',
+    },
+    {
+        field: 'nombre', headerName: 'Nombre', width: 150, editable: true, description: 'Primer nombre de la persona.'
+    },
+    {
+        field: 'apellido', headerName: 'Apellido', width: 150, editable: true, description: 'Apellido de la persona.'
+    },
+    {
+        field: 'cedula', headerName: 'Cédula', width: 130, editable: true, description: 'Número de identificación de la persona (único).'
+    },
+    {
+        field: 'fecha_nacimiento', headerName: 'F. Nacimiento', type: 'date', width: 150, editable: true, description: 'Fecha de nacimiento de la persona.'
+    },
+    {
+        field: 'direccion', headerName: 'Dirección', width: 250, editable: true, description: 'Dirección de residencia de la persona.'
+    },
+    {
+        field: 'telefono', headerName: 'Teléfono', width: 150, editable: true, description: 'Número de teléfono de contacto.'
+    },
+    {
+        field: 'nombres_padres', headerName: 'Nombres del Padre', width: 200, editable: true, description: 'Nombre completo del padre o tutor.'
+    },
+    {
+        field: 'nombres_madre', headerName: 'Nombres de la Madre', width: 200, editable: true, description: 'Nombre completo de la madre o tutora.'
+    },
+    {
+        field: 'alergias', headerName: 'Alergias', width: 180, editable: true, description: 'Cualquier alergia conocida (opcional).'
+    },
+    {
+        field: 'tipo_sangre', headerName: 'Tipo de Sangre', width: 130, editable: true, description: 'Tipo de sangre de la persona.'
+    },
+    {
+        field: 'correo', headerName: 'Correo Electrónico', width: 220, editable: true, description: 'Dirección de correo electrónico (única).'
+    },
+    {
+        field: 'creacion_persona', headerName: 'F. Creación', type: 'dateTime', width: 180, editable: false, description: 'Fecha y hora de creación del registro de la persona.'
+    }
+    /*{ field: 'id', headerName: 'ID', width: 90 }, // Aumentado el ancho ligeramente
+    { field: 'firstName', headerName: 'Nombre', width: 180, editable: true }, // Nombres de encabezado en español, editable
+    { field: 'lastName', headerName: 'Apellido', width: 180, editable: true }, // Nombres de encabezado en español, editable
+    { field: 'age', headerName: 'Edad', type: 'number', width: 100, editable: true,  },
+    { field: 'fullName', headerName: 'Nombre Completo', description: 'Esta columna combina el nombre y el apellido.', sortable: false, width: 250, }// Aumentado el ancho  valueGetter: (value, row) => `${row.firstName || ''} ${row.lastName || ''}`, },*/
+];
 
-  useEffect(() => {
-    const fetchPersonas = async () => {
-      try {
-        const response = await fetch('/api/person'); // Call your API endpoint
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data: persona[] = await response.json();
-        setPersonas(data);
-      } catch (e: any) { // Type 'any' for caught error for simplicity, or define a more specific error type
-        setError(e.message);
-      } finally {
-        setLoading(false);
-      }
-    };
 
-    fetchPersonas();
-  }, []);
+const paginationModel = { page: 0, pageSize: 5 };
 
-  if (loading) return <p className="text-center mt-8">Cargando personas...</p>;
-  if (error) return <p className="text-center mt-8 text-red-500">Error: {error}</p>;
-  if (personas.length === 0) return <p className="text-center mt-8">No hay personas registradas.</p>;
+export default function DataTable() {
+    const [rows, setRows] = useState([]);
+    const [loading, setLoading] = useState(true);
 
-  return (
-    <div className="overflow-x-auto relative shadow-md sm:rounded-lg my-10">
-      <h2 className="text-3xl font-serif text-blue-700 font-bold mb-6 text-center">Registro de Personas</h2>
-      <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-          <tr>
-            <th scope="col" className="py-3 px-6">Cédula</th>
-            <th scope="col" className="py-3 px-6">Nombre Completo</th>
-            <th scope="col" className="py-3 px-6">Fecha Nacimiento</th>
-            <th scope="col" className="py-3 px-6">Dirección</th>
-            <th scope="col" className="py-3 px-6">Teléfono</th>
-            <th scope="col" className="py-3 px-6">Correo</th>
-            <th scope="col" className="py-3 px-6">Tipo Sangre</th>
-            <th scope="col" className="py-3 px-6">Alergias</th>
-          </tr>
-        </thead>
-        <tbody>
-          {personas.map((persona) => (
-            <tr key={persona.id} className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-              <td className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {persona.cedula}
-              </td>
-              <td className="py-4 px-6">
-                {persona.nombre} {persona.apellido}
-              </td>
-              <td className="py-4 px-6">
-                {new Date(persona.fecha_nacimiento).toLocaleDateString('es-EC')}
-              </td>
-              <td className="py-4 px-6">
-                {persona.direccion}
-              </td>
-              <td className="py-4 px-6">
-                {persona.telefono}
-              </td>
-              <td className="py-4 px-6">
-                {persona.correo}
-              </td>
-              <td className="py-4 px-6">
-                {persona.tipo_sangre}
-              </td>
-              <td className="py-4 px-6">
-                {persona.alergias || 'N/A'}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-};
-
-export default PersonasTable;
+    useEffect(() => {
+        const fecthperosn = async () => {
+            try {
+                const pers = await fetch("/api/person");
+                const data = await pers.json();
+                console.log("👀 Datos recibidos:", data);
+                const formattedRows = data.personas.map((p: any) => ({
+                    ...p,
+                    fecha_nacimiento: p.fecha_nacimiento ? new Date(p.fecha_nacimiento) : null,
+                    creacion_persona: p.creacion_persona ? new Date(p.creacion_persona) : null,
+                }));
+                setRows(formattedRows);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setLoading(false);
+            }
+        };
+        fecthperosn();
+    }, [])
+    return (
+        <Paper
+            sx={{
+                height: 430,
+                width: '100%',
+                maxWidth: 1100, // Limita el ancho máximo para mejor lectura en pantallas grandes
+                margin: '2rem auto', // Centra el componente y añade margen vertical
+                boxShadow: 3, // Añade una sombra de nivel 3 (más pronunciada)
+                borderRadius: 2, // Bordes ligeramente más redondeados
+                overflow: 'hidden', // Asegura que los bordes redondeados se apliquen a todo el contenido
+                border: '1px solid #e0e0e0', // Borde sutil
+            }}
+        >
+            <DataGrid
+                rows={rows}
+                columns={columns}
+                loading={loading}
+                initialState={{ pagination: { paginationModel } }}
+                pageSizeOptions={[5, 10, 25]} // Opciones de tamaño de página adicionales
+                checkboxSelection
+                disableRowSelectionOnClick // Mejora la usabilidad al no seleccionar filas al hacer clic en ellas
+                sx={{
+                    '.MuiDataGrid-columnHeaders': {
+                        backgroundColor: '#f5f5f5', // Fondo más claro para los encabezados
+                        fontWeight: 'bold', // Texto del encabezado en negrita
+                        borderBottom: '1px solid #e0e0e0', // Borde inferior en encabezados
+                    },
+                    '.MuiDataGrid-cell': {
+                        borderBottom: '1px dashed #f0f0f0', // Líneas de celda punteadas
+                    },
+                    '.MuiDataGrid-row:hover': {
+                        backgroundColor: '#f9f9f9', // Color de fondo al pasar el ratón por encima de la fila
+                    },
+                    '& .MuiDataGrid-root': {
+                        borderRadius: 'inherit', // Hereda el border-radius del Paper
+                    },
+                    border: 'none', // Elimina el borde predeterminado del DataGrid, ya que Paper lo gestiona
+                }}
+            />
+        </Paper>
+    );
+}

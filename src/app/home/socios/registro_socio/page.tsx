@@ -9,7 +9,7 @@ export default function FormularioInscripcion() {
         Puedes ajustar el '80' a '70', '60', etc., para mayor o menor transparencia.
         El 'backdrop-blur-sm' difumina lo que hay detrás del formulario.
       */}
-      <div className="max-w-3xl w-full bg-white/70 p-8 rounded-xl shadow-lg border border-gray-200 backdrop-blur-sm">
+      <div className="max-w-3xl w-full bg-white p-8 rounded-xl shadow-lg border border-gray-200 backdrop-blur-sm">
         <form className="space-y-6">
           {/* Encabezado para la Sección de Registro */}
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-6">
