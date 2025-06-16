@@ -1,0 +1,89 @@
+src 
+    
+    |
+    |
+    |
+    ├── app/                                        # Directorio principal del App Router
+            ├──api/
+            |      ├── auth/                       # Autenticación de usuarios (ej. login, registro, logout)
+            |      │   └── route.ts                # POST: /api/auth/login, /api/auth/register
+            |      │
+            |      ├── socios/
+            |      │   ├── route.ts                # GET: /api/socios (listar todos)
+            |      │                               # POST: /api/socios (crear nuevo)
+            |      │   ├── [id]/
+            |      │   │   └── route.ts            # GET: /api/socios/[id] (obtener por ID)
+            |      │   │                           # PUT: /api/socios/[id] (actualizar por ID)
+            |      │   │                           # DELETE: /api/socios/[id] (eliminar por ID)
+            |      │   └── deshabilitar/
+            |      │       └── route.ts            # POST: /api/socios/deshabilitar (lógica para deshabilitar)
+            |      │
+            |      ├── cursos/
+            |      │   ├── route.ts                # GET: /api/cursos (listar todos)
+            |      │                               # POST: /api/cursos (crear nuevo)
+            |      │   ├── [id]/
+            |      │   │   └── route.ts            # GET: /api/cursos/[id] (obtener por ID)
+            |      │   │                           # PUT: /api/cursos/[id] (actualizar por ID)
+            |      │   │   └── inscripciones/
+            |      │   │       └── route.ts        # GET: /api/cursos/[id]/inscripciones (listar inscripciones de un curso específico)
+            |      │   │                           # POST: /api/cursos/[id]/inscripciones (registrar socio a este curso)
+            |      │   └── inscripciones/
+            |      │       ├── route.ts            # GET: /api/cursos/inscripciones (listar todas las inscripciones de todos los cursos)
+            |      │                               # POST: /api/cursos/inscripciones (crear una nueva inscripción general)
+            |      │       └── [inscripcion_id]/
+            |      │           └── route.ts        # PUT: /api/cursos/inscripciones/[inscripcion_id] (actualizar inscripción)
+            |      │                               # DELETE: /api/cursos/inscripciones/[inscripcion_id] (eliminar inscripción)
+            |      │
+            |      ├── egresos/
+            |      │   ├── route.ts                # GET: /api/egresos (listar todos)
+            |      │                               # POST: /api/egresos (crear nuevo)
+            |      │   └── [id]/
+            |      │       └── route.ts            # GET: /api/egresos/[id] (obtener por ID)
+            |      │                               # PUT: /api/egresos/[id] (actualizar por ID)
+            |      │                               # DELETE: /api/egresos/[id] (eliminar por ID)
+            |      │
+            |      └── convenios/
+            |            ├── route.ts                # GET: /api/convenios (listar todos)
+            |            │                           # POST: /api/convenios (crear nuevo)
+            |            └── [id]/
+            |                 └── route.ts            # GET: /api/convenios/[id] (obtener por ID)
+            |                               # PUT: /api/convenios/[id] (actualizar por ID)
+            |                              # DELETE: /api/convenios/[id] (eliminar por ID)              # API para el proceso de logout (ej. /api/logout)
+            ├──ui/
+            |     ├── Drawe2.tsx
+            |     └── Navbar.tsx
+            └── Home/
+                  ├── layout.tsx                          # Layout global de la aplicación
+                  ├── page.tsx                            # Página de inicio (ruta "/")
+                  │
+                  ├── socios/                             # Ruta: /socios
+                  │       ├── page.tsx                    # UI de la lista de socios (/socios)
+                  │       ├── registrar/                  # Ruta: /socios/registrar
+                  │       │       └── page.tsx            # UI del formulario de registro de socios
+                  │       ├── [id]/                       # Ruta dinámica: /socios/[id]
+                  │       │       └── page.tsx            # UI del detalle/actualización del socio
+                  │       └── deshabilitar/               # Ruta: /socios/deshabilitar
+                  │               └── page.tsx            # UI para deshabilitar socios
+                  │
+                  ├── cursos/                             # Ruta: /cursos
+                  │       ├── page.tsx                    # UI de la lista de cursos (/cursos)
+                  │       ├── registrar/                  # Ruta: /cursos/registrar
+                  │       │       └── page.tsx            # UI del formulario de registro de cursos
+                  │       ├── [id]/                       # Ruta dinámica: /cursos/[id]
+                  │       │       ├── page.tsx             # UI del detalle del curso
+                  │       │       └── inscripciones/      # Ruta: /cursos/[id]/inscripciones
+                  │       │               └── page.tsx    # UI para ver/gestionar inscripciones de este curso
+                  │       └── gestionar-inscripciones/    # Ruta: /cursos/gestionar-inscripciones
+                  │                └── page.tsx           # UI general para gestionar inscripciones
+                  │
+                  ├── egresos/                            # Ruta: /egresos
+                  │       ├── page.tsx                    # UI de la lista de egresos (/egresos)
+                  │       └── registrar/                  # Ruta: /egresos/registrar
+                  │               └── page.tsx            # UI del formulario de registro de egresos
+                  │
+                  ├── convenios/                          # NUEVA RUTA: /convenios
+                        ├── page.tsx                    # UI de la lista de convenios disponibles (/convenios)
+                        ├── registrar/                  # Ruta: /convenios/registrar
+                        │       └── page.tsx            # UI del formulario para registrar nuevos convenios
+                        └── [id]/                       # Ruta dinámica: /convenios/[id] (detalle/actualización de un convenio)
+                              └── page.tsx            # UI del detalle/actualización de un convenio

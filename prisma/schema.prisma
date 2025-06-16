@@ -75,6 +75,7 @@ model persona {
   alergias         String?
   tipo_sangre      tipo_sangre_enum
   correo           String           @unique @db.VarChar(100)
+  creacion_persona  DateTime         @default(now())
 
   usuario usuario[]
   inscripciones inscripciones[]
@@ -85,6 +86,7 @@ model usuario {
   correo     String   @unique @db.VarChar(100)
   contraseña String   @db.VarChar(100)
   persona_id Int
+  creacion_usuario DateTime @default(now())
   persona    persona  @relation(fields: [persona_id], references: [id])
   convenios  convenios[]
   reservas   reservas[]

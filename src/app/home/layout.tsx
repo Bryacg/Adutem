@@ -8,15 +8,16 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="min-h-screen w-screen  flex flex-col items-center justify-center text-black">
+    <div className="min-h-screen w-screen  flex flex-col justify-center text-black">
       
       <header className="w-full">
         <Navbar />
      </header>
-      <main className="flex flex-col gap-8 items-center sm:items-start w-screen">
-        
-        {children}
+
+      <main className="flex flex-col flex-grow items-center justify-center w-full">
         <Draweru />
+        {children}
+        
       </main>
     </div>
   

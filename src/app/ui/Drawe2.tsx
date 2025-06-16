@@ -43,9 +43,9 @@ export default function Draweru() {
             </button>
             {openSocios && (
               <div className="pl-4 mt-1 space-y-1">
-                <Link href="/socios" className="flex items-center gap-2 hover:underline">Ver socios</Link>
+                <Link href="/home/socios" className="flex items-center gap-2 hover:underline">Ver socios</Link>
                 <Link href="/home/socios/registro_socio" className="flex items-center gap-2 hover:underline"><FiEdit3 /> Registrar socio</Link>
-                <Link href="/socios/deshabilitar" className="flex items-center gap-2 hover:underline">Deshabilitar socios</Link>
+                <Link href="/home/socios/deshabilitar" className="flex items-center gap-2 hover:underline">Deshabilitar socios</Link>
               </div>
             )}
           </div>
@@ -58,16 +58,16 @@ export default function Draweru() {
             </button>
             {openCursos && (
               <div className="pl-4 mt-1 space-y-1">
-                <Link href="/cursos" className="flex items-center gap-2 hover:underline">Ver cursos</Link>
-                <Link href="/cursos/registrar" className="flex items-center gap-2 hover:underline">Registrar curso</Link>
-                <Link href="/cursos/gestionar-inscripciones" className="flex items-center gap-2 hover:underline">Gestionar inscripciones</Link>
+                <Link href="/home/cursos" className="flex items-center gap-2 hover:underline">Ver cursos</Link>
+                <Link href="/home/cursos/registrar" className="flex items-center gap-2 hover:underline">Registrar curso</Link>
+                <Link href="/home/cursos/gestionar-inscripciones" className="flex items-center gap-2 hover:underline">Gestionar inscripciones</Link>
               </div>
             )}
           </div>
 
           {/* EGRESOS */}
           <div>
-            <Link href="/egresos" className="flex items-center gap-2 font-semibold hover:underline">
+            <Link href="/home/egreso" className="flex items-center gap-2 font-semibold hover:underline">
               <FiDollarSign /> Comprobantes de Egreso
             </Link>
             <Link href="/home/egreso/comprobante_egreso" className="flex items-center gap-2 pl-4 hover:underline">

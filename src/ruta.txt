@@ -7,12 +7,12 @@ src
     │     ├──login/
     │     |     └── page.tsx
     │     ├──api/
-    │     |     ├── login/
+    │     |     ├── login/                          # Endpoints de API (Serverless Functions)
           |     |       ├──usuario/
-          |     |       |     └── route.ts
-          |     |       └──route.ts
+          |     |       |     └── route.ts          # API para la autenticación de usuarios que se encuentra en la cookies (ej. /api/login/usuario)
+          |     |       └──route.ts                  # API para el proceso de login (ej. /api/login)
           |     └── logout/
-          |             └── route.ts
+          |             └── route.ts               # API para el proceso de logout (ej. /api/logout)
     │     ├──ui/
     │     |     ├── Drawe2.tsx
     │     |     └── Navbar.tsx
