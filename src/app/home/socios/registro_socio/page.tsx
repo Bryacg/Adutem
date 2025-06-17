@@ -1,7 +1,7 @@
 // components/FormularioInscripcion.tsx
 export default function FormularioInscripcion() {
   return (
-    
+
     // Sigue centrando el contenido.
     <section className="max-w-3xl w-full p-8 rounded-xl  border-gray-200 ">
       {/*
@@ -47,7 +47,7 @@ export default function FormularioInscripcion() {
                 <span className="text-gray-700 font-medium">Fecha de Nac.:</span>
                 <input type="date" name="fecha_nac" className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out" />
               </label>
-              
+
             </div>
 
             <label className="block">
@@ -92,6 +92,31 @@ export default function FormularioInscripcion() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <label className="block">
+                <span className="text-gray-700 font-medium">Valor Mensualidad:</span>
+                <input type="text" name="valor" placeholder="Ej: $50.00" className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out" />
+              </label>
+              
+              <label className="block">
+                <span className="text-gray-700 font-medium">Tipo de Sangre:</span>
+                <select
+                  name="sangre"
+                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out"
+                >
+                  <option value="">Seleccione su tipo de sangre</option>
+                  <option value="O+">O+</option>
+                  <option value="O-">O-</option>
+                  <option value="A+">A+</option>
+                  <option value="A-">A-</option>
+                  <option value="B+">B+</option>
+                  <option value="B-">B-</option>
+                  <option value="AB+">AB+</option>
+                  <option value="AB-">AB-</option>
+                </select>
+              </label>
+            </div>
+
+            
+              <label className="block">
                 <span className="text-gray-700 font-medium">Alérgico:</span>
                 <input
                   type="text"
@@ -100,27 +125,8 @@ export default function FormularioInscripcion() {
                   className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out"
                 />
               </label>
-              <label className="block">
-                <span className="text-gray-700 font-medium">Tipo de Sangre:</span>
-                <input
-                  type="text"
-                  name="sangre"
-                  placeholder="Ej: O+, AB-"
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out"
-                />
-              </label>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <label className="block">
-                <span className="text-gray-700 font-medium">Firma del Representante:</span>
-                <input type="text" name="firma_representante" placeholder="Nombre del representante que firma" className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out" />
-              </label>
-              <label className="block">
-                <span className="text-gray-700 font-medium">Valor Mensualidad:</span>
-                <input type="text" name="valor" placeholder="Ej: $50.00" className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out" />
-              </label>
-            </div>
+              
+            
           </div>
 
           {/* Separador */}

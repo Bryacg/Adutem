@@ -60,7 +60,7 @@ export default function Draweru() {
               <div className="pl-4 mt-1 space-y-1">
                 <Link href="/home/cursos" className="flex items-center gap-2 hover:underline">Ver cursos</Link>
                 <Link href="/home/cursos/registrar" className="flex items-center gap-2 hover:underline">Registrar curso</Link>
-                <Link href="/home/cursos/gestionar-inscripciones" className="flex items-center gap-2 hover:underline">Gestionar inscripciones</Link>
+                <Link href="/home/cursos/gestion" className="flex items-center gap-2 hover:underline">Gestionar inscripciones</Link>
               </div>
             )}
           </div>
