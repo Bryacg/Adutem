@@ -23,6 +23,7 @@ export async function GET() {
     return NextResponse.json({
       usuario: {
         nombre: usuario.persona?.nombre || 'Sin nombre',
+        apellido: usuario.persona?.apellido || 'Sin apellido',
         correo: usuario.correo,
       },
     });

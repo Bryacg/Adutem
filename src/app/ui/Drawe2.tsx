@@ -18,7 +18,7 @@ export default function Draweru() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-16 left-4 z-50 p-2 bg-gray-200 dark:bg-gray-700 rounded-md shadow-md"
+        className="fixed top-16 left-4 z-50 p-2 bg-gray-200 rounded-md shadow-md"
         aria-label="Abrir menú"
       >
         {isOpen ? <FiX className="w-6 h-6" /> : <FiMenu className="w-6 h-6" />}
@@ -27,7 +27,7 @@ export default function Draweru() {
       {isOpen && <div className="fixed inset-0 bg-transparent z-40" onClick={() => setIsOpen(false)} />}
 
       <div
-        className={`fixed top-0 left-0 h-full w-64 bg-white dark:bg-gray-800 shadow-lg z-50 transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
+        className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
       >
         <div className="p-4 border-b flex justify-between items-center">
           <span className="text-lg font-bold">MENÚ PRINCIPAL</span>
@@ -87,19 +87,19 @@ export default function Draweru() {
 
             {openAreas && (
               <div className="pl-4 mt-1 space-y-1">
-                <Link href="/areas/piscina" className="flex items-center gap-2 hover:underline">
+                <Link href="/home/areas/piscina" className="flex items-center gap-2 hover:underline">
                   <FiActivity /> Piscina
                 </Link>
-                <Link href="/areas/cancha-multiple" className="flex items-center gap-2 hover:underline">
+                <Link href="/home/areas/cancha-multiple" className="flex items-center gap-2 hover:underline">
                   <FiActivity /> Cancha múltiple
                 </Link>
-                <Link href="/areas/cancha-sintetica" className="flex items-center gap-2 hover:underline">
+                <Link href="/home/areas/cancha-sintetica" className="flex items-center gap-2 hover:underline">
                   <FiActivity /> Cancha sintética
                 </Link>
-                <Link href="/areas/parrillada" className="flex items-center gap-2 hover:underline">
+                <Link href="/home/areas/parrillada" className="flex items-center gap-2 hover:underline">
                   <FiSmile /> Area Parrillada
                 </Link>
-                <Link href="/areas/salon-eventos" className="flex items-center gap-2 hover:underline">
+                <Link href="/home/areas/salon-eventos" className="flex items-center gap-2 hover:underline">
                   <FiMapPin /> Salón de eventos
                 </Link>
               </div>

@@ -95,7 +95,7 @@ export default function FormularioInscripcion() {
                 <span className="text-gray-700 font-medium">Valor Mensualidad:</span>
                 <input type="text" name="valor" placeholder="Ej: $50.00" className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out" />
               </label>
-              
+
               <label className="block">
                 <span className="text-gray-700 font-medium">Tipo de Sangre:</span>
                 <select
@@ -114,25 +114,21 @@ export default function FormularioInscripcion() {
                 </select>
               </label>
             </div>
+            <label className="block">
+              <span className="text-gray-700 font-medium">Alérgico:</span>
+              <textarea
+                name="alergico"
+                rows={4}
+                placeholder="Describa si es alérgico a algún medicamento o alimento"
+                className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md  focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out">
 
-            
-              <label className="block">
-                <span className="text-gray-700 font-medium">Alérgico:</span>
-                <input
-                  type="text"
-                  name="alergico"
-                  placeholder="Especifique alergias si aplica"
-                  className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out"
-                />
-              </label>
-              
-            
+              </textarea>
+            </label>
+
           </div>
 
           {/* Separador */}
           <hr className="my-8 border-gray-300" />
-
-
 
           {/* Botón de Envío */}
           <div className="pt-6">
